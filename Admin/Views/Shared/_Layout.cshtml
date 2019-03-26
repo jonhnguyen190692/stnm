@@ -373,7 +373,7 @@
     <!-- /#wrapper -->
     <!-- Core Scripts - Include with every page -->
     <script src="/Assets/js/jquery-1.10.2.js"></script>
-    <script src="/Assets/js/jquery.validate.unobtrusive.min.js"></script>
+    <script src="/Scripts/jquery.unobtrusive-ajax.min.js"></script>
     <script src="/Assets/js/bootstrap.min.js"></script>
     <script src="/Assets/js/plugins/metisMenu/jquery.metisMenu.js"></script>
 
@@ -384,9 +384,11 @@
     <!-- SB Admin Scripts - Include with every page -->
     <script src="/Assets/js/sb-admin.js"></script>
 
+    <!--CKFinder-->
+    <script src="/Assets/js/plugins/ckfinder/ckfinder.js"></script>
     <!-- Page-Level Demo Scripts - Dashboard - Use for reference -->
     <script src="/Assets/js/demo/dashboard-demo.js"></script>
-
+    @RenderSection("jsFooter", required: false)
 </body>
 
 </html>

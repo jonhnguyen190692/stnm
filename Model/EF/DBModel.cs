@@ -12,12 +12,46 @@ namespace Model.EF
         {
         }
 
-        public virtual DbSet<MenuLevel1> MenuLevel1 { get; set; }
-        public virtual DbSet<MenuLevel2> MenuLevel2 { get; set; }
-        public virtual DbSet<MenuLevel3> MenuLevel3 { get; set; }
+        public virtual DbSet<Category> Categories { get; set; }
+        public virtual DbSet<Content> Contents { get; set; }
+        public virtual DbSet<ContentTag> ContentTags { get; set; }
+        public virtual DbSet<FeebBack> FeebBacks { get; set; }
+        public virtual DbSet<Footer> Footers { get; set; }
+        public virtual DbSet<Menu> Menus { get; set; }
+        public virtual DbSet<Menutype> Menutypes { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<ProductCategory> ProductCategories { get; set; }
+        public virtual DbSet<Slide> Slides { get; set; }
+        public virtual DbSet<SystemConfig> SystemConfigs { get; set; }
+        public virtual DbSet<Tag> Tags { get; set; }
+        public virtual DbSet<About> Abouts { get; set; }
+        public virtual DbSet<Sys_User> Sys_User { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Footer>()
+                .Property(e => e.Status)
+                .IsFixedLength();
+
+            modelBuilder.Entity<Product>()
+                .Property(e => e.PromotionPrice)
+                .HasPrecision(18, 0);
+
+            modelBuilder.Entity<Product>()
+                .Property(e => e.Price)
+                .HasPrecision(18, 0);
+
+            modelBuilder.Entity<Product>()
+                .Property(e => e.Waranty)
+                .IsFixedLength();
+
+            modelBuilder.Entity<Sys_User>()
+                .Property(e => e.UserCode)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Sys_User>()
+                .Property(e => e.Mobile)
+                .IsUnicode(false);
         }
     }
 }
