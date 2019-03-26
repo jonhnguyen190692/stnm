@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Dao\LoginDAO.cs" />
     <Compile Include="Dao\ProductCategoryDao.cs" />
+    <Compile Include="Dao\ProductDao.cs" />
     <Compile Include="EF\About.cs" />
     <Compile Include="EF\Category.cs" />
     <Compile Include="EF\CMSDB.cs" />
