@@ -81,5 +81,10 @@ namespace Model.Dao
                 return false;
             }
         }
+
+        public IEnumerable<ProductCategory> ListProductCtegory()
+        {
+            return db.ProductCategories.Where(x => x.Status == true).ToList();
+        }
     }
 }

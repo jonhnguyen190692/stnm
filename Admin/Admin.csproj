@@ -167,6 +167,7 @@
     <Content Include="Assets\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Assets\js\bootstrap.js" />
     <Content Include="Assets\js\bootstrap.min.js" />
+    <Content Include="Assets\js\controller\productController.js" />
     <Content Include="Assets\js\demo\dashboard-demo.js" />
     <Content Include="Assets\js\demo\flot-demo.js" />
     <Content Include="Assets\js\demo\morris-demo.js" />
@@ -1173,6 +1174,8 @@
     <Content Include="Views\ProductCategory\Index.cshtml" />
     <Content Include="Views\ProductCategory\Update.cshtml" />
     <Content Include="Views\Product\Create.cshtml" />
+    <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\Product\Update.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

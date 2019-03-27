@@ -10,7 +10,7 @@
     [Table("sieuthin.Product")]
     public partial class Product
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long ID { get; set; }
 
         [StringLength(250)]
