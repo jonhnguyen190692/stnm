@@ -16,5 +16,26 @@ namespace Model.Dao
             db = new DBModel();
         }
 
+        public long Insert(Category entity)
+        {
+            try
+            {
+                entity.CreatedOn = DateTime.Now;
+                db.Categories.Add(entity);
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return entity.ID;
+           
+        }
+
+        public Category GetByID(long id)
+        {
+            return db.Categories.FirstOrDefault(x=>x.ID == id);
+        }
+
     }
 }

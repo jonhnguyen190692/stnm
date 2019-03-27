@@ -97,8 +97,8 @@ namespace Admin.Controllers
                 }
                 if (result)
                 {
-                    ModelState.AddModelError("","Cập nhật thành công");
-                   return RedirectToAction("Index");
+                    ModelState.AddModelError("", "Cập nhật thành công");
+                    return RedirectToAction("Index");
                 }
                 else
                 {
@@ -106,7 +106,11 @@ namespace Admin.Controllers
                     return RedirectToAction("Update");
                 }
             }
-            return View();
+            else
+            {
+                ModelState.AddModelError("", "Vui lòng nhập đầy đủ thông tin");
+                return View();
+            }
         }
     }
 }

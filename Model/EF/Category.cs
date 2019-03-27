@@ -1,7 +1,8 @@
-namespace Model.EF
+﻿namespace Model.EF
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
@@ -9,17 +10,17 @@ namespace Model.EF
     [Table("sieuthin.Category")]
     public partial class Category
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long ID { get; set; }
 
         [StringLength(250)]
+        [DisplayName("Tên hiển thị")]
         public string Name { get; set; }
 
         [StringLength(250)]
         public string MetaTitle { get; set; }
 
-        public long? ParentID { get; set; }
-
+        [DisplayName("Thứ tự hiển thị")]
         public int? DisplayOrder { get; set; }
 
         [StringLength(250)]
@@ -41,11 +42,13 @@ namespace Model.EF
         [StringLength(250)]
         public string MetaDescriptions { get; set; }
 
+        [DisplayName("Trạng thái")]
         public bool? Status { get; set; }
 
         public bool? ShowOnhome { get; set; }
 
         [StringLength(250)]
+        [DisplayName("Hình ảnh")]
         public string Image { get; set; }
     }
 }
