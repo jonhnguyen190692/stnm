@@ -282,6 +282,8 @@
     <Content Include="Content\sys_page\image\9502582964254.jpg" />
     <Content Include="Content\sys_page\image\9530832683038.jpg" />
     <Content Include="Content\sys_page\image\avatar_simple_visitor.png" />
+    <Content Include="Content\sys_page\image\banner1.png" />
+    <Content Include="Content\sys_page\image\banner2.png" />
     <Content Include="Content\sys_page\image\banner_01.jpg" />
     <Content Include="Content\sys_page\image\banner_02.jpg" />
     <Content Include="Content\sys_page\image\banner_03.jpg" />
@@ -502,6 +504,7 @@
     <Content Include="Views\Default\Index.cshtml" />
     <Content Include="Views\Default\Detail.cshtml" />
     <Content Include="Views\Default\List.cshtml" />
+    <Content Include="Views\Shared\Tooger.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -12,27 +12,17 @@ namespace Admin.Controllers
     public class LoginController : Controller
     {
         // GET: Login
+        [HttpGet]
         [OutputCache(Duration = 10000)]
         public ActionResult Index()
         {
-            LoginModel Rember = (LoginModel)Session[CommonConstants.CHECK_LOGIN];
-
-            if (Rember != null && Rember.RememberMe == true)
-            {
-                return View(Rember);
-
-            }
-            else
-            {
-                Session[CommonConstants.CHECK_LOGIN] = null;
-            }
             return View();
         }
-        [HttpGet]
+        [HttpPost]
         public ActionResult Index(LoginModel model)
         {
-            if (ModelState.IsValid)
-            {
+            //if (ModelState.IsValid)
+            //{
                 var dao = new LoginDAO();
                 var result = dao.CheckLogin(model.UserName, Encryptor.MD5Hash(model.Password));
                 if (result == 1)
@@ -47,15 +37,15 @@ namespace Admin.Controllers
                     Session.Add(CommonConstants.USER_SESSION, user);
                     Session.Add
                         (CommonConstants.CHECK_LOGIN, userSession);
-                    return View("Home");
+                    return View("/Admin/Home");
                 }
                 else
                 {
                     ModelState.AddModelError("", "Đăng nhập không thành công");
 
                 }
-            }
-            return View(model);
+            //}
+            return View();
 
         }
     }

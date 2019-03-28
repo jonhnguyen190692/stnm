@@ -1,0 +1,49 @@
+﻿@{
+    Layout = null;
+}
+<html lang="en">
+
+<head>
+    <title>Welcome to company</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="Content-Security-Policy" content="default-src * blob:; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'; img-src * data: 'unsafe-inline'; connect-src * 'unsafe-inline'; frame-src * data: blob: 'unsafe-inline'; font-src * data:; media-src * blob:; object-src 'self' data: blob: *">
+    <meta name="theme-color" content="#22baa0">
+    <link href="/Content/QLDN/commons.css" rel="stylesheet" />
+</head>
+<body style="overflow-y: scroll;" class="body_cloud">
+    <div id="loginbox">
+        <div data-reactid=".6">
+            <div id="logindialog" style="position: absolute; top: 0px; width: 100%; z-index: 1001;  margin-top: 231.5px;display: block !important;" data-reactid=".6.0" class="transition visible">
+                <div class="ui stackable four column grid" data-reactid=".6.0.0">
+                    <div class="column centered fiv wide" id="logininner" data-reactid=".6.0.0.0">
+                        <h1 style="text-align:center;margin-bottom:1em;" data-reactid=".6.0.0.0.0">
+                            <img src="/Content/QLDN/teamcrop.png" width="240" data-reactid=".6.0.0.0.0.0">
+                        </h1>
+                        <div class="ui hidden small error message" data-reactid=".6.0.0.0.1">
+                            <div class="header" data-reactid=".6.0.0.0.1.0">Lỗi</div>
+                            <p data-reactid=".6.0.0.0.1.1">@ViewBag.Error</p>
+                        </div>
+                        <form action="/Home/Login" method="post" class="ui form" data-reactid=".6.0.0.0.2">
+                            <div class="field required" data-reactid=".6.0.0.0.2.0">
+                                <label data-reactid=".6.0.0.0.2.0.0">Tài khoản</label>
+                                <input type="text" name="userName" data-reactid=".6.0.0.0.2.0.1">
+                            </div>
+                            <div class="field required" data-reactid=".6.0.0.0.2.1">
+                                <label data-reactid=".6.0.0.0.2.1.0">Mật khẩu</label>
+                                <input type="password" id="password" name="Password" data-reactid=".6.0.0.0.2.1.1">
+                            </div>
+                            <button class="ui button teal" type="submit" data-reactid=".6.0.0.0.2.2">Đăng nhập</button>
+                            <a href="#user/forgotpass" class="ui floated right pull-right" style="padding-top:0.6em;" data-reactid=".6.0.0.0.2.3">Quên mật khẩu?</a>
+                            <div class="ui divider" data-reactid=".6.0.0.0.2.4"></div>
+                        </form>
+                        <div class="ui relaxed divided list" data-reactid=".6.0.0.0.3"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

@@ -9,10 +9,10 @@ namespace Model.Dao
 {
     public class LoginDAO
     {
-        private CMSDB db = null;
+        private DBModel db = null;
         public LoginDAO()
         {
-            db = new CMSDB();
+            db = new DBModel();
         }
         public int CheckLogin(string username, string passWord)
         {

@@ -62,7 +62,6 @@
     <Compile Include="Dao\ProductDao.cs" />
     <Compile Include="EF\About.cs" />
     <Compile Include="EF\Category.cs" />
-    <Compile Include="EF\CMSDB.cs" />
     <Compile Include="EF\Content.cs" />
     <Compile Include="EF\ContentTag.cs" />
     <Compile Include="EF\FeebBack.cs" />
