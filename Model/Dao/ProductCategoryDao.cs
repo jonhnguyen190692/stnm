@@ -5,13 +5,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI.WebControls;
 
 namespace Model.Dao
 {
-   public class ProductCategoryDao
+    public class ProductCategoryDao
     {
         DBModel db = null;
-        
+
         public ProductCategoryDao()
         {
             db = new DBModel();
@@ -31,7 +32,7 @@ namespace Model.Dao
             return entity.ID;
         }
 
-        public IEnumerable<ProductCategory> ListAllPaging(int page,int pageSize)
+        public IEnumerable<ProductCategory> ListAllPaging(int page, int pageSize)
         {
             return db.ProductCategories.OrderBy(x => x.CreatedOn).ToPagedList(page, pageSize);
         }
@@ -56,7 +57,7 @@ namespace Model.Dao
             return db.ProductCategories.FirstOrDefault(x => x.ID == id);
         }
 
-        public bool Update (ProductCategory entity)
+        public bool Update(ProductCategory entity)
         {
             try
             {
@@ -85,6 +86,25 @@ namespace Model.Dao
         public IEnumerable<ProductCategory> ListProductCtegory()
         {
             return db.ProductCategories.Where(x => x.Status == true).ToList();
+        }
+
+        public IEnumerable<ProductCategory> ListCategoryParent()
+        {
+            return db.ProductCategories.Where(x => x.Status == true);
+        }
+
+        public bool ChangeStatus(long id)
+        {
+            var model = db.ProductCategories.Find(id);
+            model.Status = !model.Status;
+            db.SaveChanges();
+            return bool.Parse(model.Status.ToString());
+        }
+
+        public IEnumerable<ProductCategory> LoadCategory(int id)
+        {
+            var items = db.ProductCategories.Where(x => x.LevelMenu == (id-1)).ToList();
+            return items;
         }
     }
 }

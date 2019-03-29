@@ -2,6 +2,7 @@
     init: function () {
         product.registerEvent();
     },
+    //Vị trí tạo hàm muốn xử lý
     registerEvent: function () {
         //Hiện Modal khi ấn Nút Quản Lý Ảnh
         $('.btn-images').off('click').on('click', function (e) {
@@ -17,6 +18,7 @@
             //Load hình của Product
             product.loadImages();
         });
+
         //Xử lý cho nút Chọn Ảnh
         $('#btnChooseImage').off('click').on('click', function (e) {
             e.preventDefault();
@@ -32,6 +34,7 @@
             //Hiện popup
             finder.popup();
         });
+
         //Xử lý cho nút Lưu
         $('#btnSaveImages').off('click').on('click', function () {
             //Tạo mảng chứa hình ảnh
@@ -65,10 +68,12 @@
                 }
             });
         });
+
         //Xử lý cho nút Đóng
         $('#btnCloseModel').off('click').on('click', function () {
             $('.modal-content').hide();
         });
+
     },
 
     //Hàm load hình cho Product

@@ -56,5 +56,8 @@
 
         [DisplayName("Cấp menu")]
         public int? LevelMenu { get; set; }
+
+        [DisplayName("Top thương hiệu")]
+        public bool? TopBrand { get; set; }
     }
 }

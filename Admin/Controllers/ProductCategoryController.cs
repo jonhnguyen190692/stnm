@@ -5,13 +5,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 
 namespace Admin.Controllers
 {
     public class ProductCategoryController : Controller
     {
         // GET: ProductCategory
-        public ActionResult Index(int page = 1, int pageSize = 1)
+        public ActionResult Index(int page = 1, int pageSize = 10)
         {
             var model = new ProductCategoryDao().ListAllPaging(page, pageSize);
             return View(model);
@@ -20,6 +21,8 @@ namespace Admin.Controllers
         [HttpGet]
         public ActionResult Create()
         {
+            SetViewBag();
+            //LoadCategory(0);
             return View();
         }
 
@@ -33,6 +36,8 @@ namespace Admin.Controllers
                 try
                 {
                     //entity.CreatedBy = "";
+                    entity.Status = true;
+                    entity.ShowOnhome = false;
                     entity.CreatedOn = DateTime.Now;
                     id = dao.Insert(entity);
                 }
@@ -112,5 +117,60 @@ namespace Admin.Controllers
                 return View();
             }
         }
+
+        public void SetViewBag(long? selectedId = null)
+        {
+            ViewBag.CategoryID = new SelectList(new ProductCategoryDao().ListCategoryParent(), "ID", "Name", selectedId);
+        }
+
+        [HttpPost]
+        public JsonResult ChangeStatus(long id)
+        {
+            var result = new ProductCategoryDao().ChangeStatus(id);
+            return Json(new
+            {
+                status = result
+            });
+        }
+
+        public JsonResult GetCountries()
+        {
+            var Countries = new List<ListItem>();
+            Countries.Add(new ListItem("Cấp menu", "0"));
+            Countries.Add(new ListItem("Cấp 1", "1"));
+            Countries.Add(new ListItem("Cấp 2", "2"));
+            Countries.Add(new ListItem("Cấp 3", "3"));
+            return Json(Countries, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult GetStates(string id)
+        {
+            //var States = new List<string>();
+            //if (!string.IsNullOrWhiteSpace(country))
+            //{
+            //    if (country.Equals("Australia"))
+            //    {
+            //        States.Add("Sydney");
+            //        States.Add("Perth");
+            //    }
+            //    if (country.Equals("India"))
+            //    {
+            //        States.Add("Delhi");
+            //        States.Add("Mumbai");
+            //    }
+            //    if (country.Equals("Russia"))
+            //    {
+            //        States.Add("Minsk");
+            //        States.Add("Moscow");
+            //    }
+            //}
+            ListItem item = new ListItem();
+            int newID = int.Parse(id);
+            var States = new ProductCategoryDao().LoadCategory(newID);
+
+            return Json(States, JsonRequestBehavior.AllowGet);
+        }
+
     }
 }
