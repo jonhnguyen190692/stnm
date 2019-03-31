@@ -11,9 +11,10 @@ namespace Admin.Controllers
     public class CategoryController : Controller
     {
         // GET: Category
-        public ActionResult Index()
+        public ActionResult Index(int page = 1, int pageSize = 10)
         {
-            return View();
+            var model = new CategoryDao().ListAllPagging(page, pageSize);
+            return View(model);
         }
 
         [HttpGet]
@@ -30,6 +31,8 @@ namespace Admin.Controllers
                 long id;
                 try
                 {
+                    entity.CreatedOn = DateTime.Now;
+                    entity.Status = true;
                     id = new CategoryDao().Insert(entity);
                 }
                 catch (Exception ex)
@@ -60,5 +63,33 @@ namespace Admin.Controllers
             var model = new CategoryDao().GetByID(id);
             return View(model);
         }
+
+        [HttpDelete]
+        public ActionResult Delete(long id)
+        {
+            bool result = new CategoryDao().Delete(id);
+            if (result)
+            {
+                ModelState.AddModelError("", "Xóa thành công");
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                ModelState.AddModelError("", "Xóa không thành công");
+                return RedirectToAction("Index");
+            }
+        }
+
+        [HttpPost]
+        public JsonResult ChangeStatus(long id)
+        {
+            var result = new CategoryDao().ChangeStatus(id);
+            return Json(new
+            {
+                status = result
+            });
+        }
+
+
     }
 }

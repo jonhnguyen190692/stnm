@@ -32,9 +32,14 @@ namespace Model.Dao
             return entity.ID;
         }
 
-        public IEnumerable<ProductCategory> ListAllPaging(int page, int pageSize)
+        public IEnumerable<ProductCategory> ListAllPaging(string searchString,int page, int pageSize)
         {
-            return db.ProductCategories.OrderBy(x => x.CreatedOn).ToPagedList(page, pageSize);
+            IQueryable<ProductCategory> model = db.ProductCategories;
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                model.Where(x => x.Name.Contains(searchString));
+            }
+            return model.OrderBy(x => x.DisplayOrder).ToPagedList(page, pageSize);
         }
 
         public bool Delete(int id)

@@ -10,6 +10,7 @@
     [Table("sieuthin.ProductCategory")]
     public partial class ProductCategory
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long ID { get; set; }
 
         [StringLength(250)]

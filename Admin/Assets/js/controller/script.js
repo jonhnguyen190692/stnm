@@ -52,6 +52,7 @@ $('#stateDropDownList').on('change', function () {
     var parentId = $('#stateDropDownList').val();
     //alert(parentId);
     //var id = $('#txt-parent').add('value', parentId.Value);
-    var id = $('#txt-parent').addClass(parentId);
-    //alert(id.va());
+    //var id = $('#txt-parent').attr("data-value", parentId);
+    var id = $('#txt-parent').html(parentId.Value.Text);
+    alert(id.Value);
 })

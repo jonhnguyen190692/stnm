@@ -1,7 +1,8 @@
-namespace Model.EF
+﻿namespace Model.EF
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
@@ -9,23 +10,29 @@ namespace Model.EF
     [Table("sieuthin.Content")]
     public partial class Content
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long ID { get; set; }
 
         [StringLength(250)]
+        [DisplayName("Tên bài viết")]
         public string Name { get; set; }
 
         [StringLength(250)]
         public string MetaTitle { get; set; }
 
         [StringLength(500)]
+        [DisplayName("Mô tả")]
         public string Description { get; set; }
 
         [StringLength(250)]
+        [DisplayName("Hình ảnh")]
         public string Image { get; set; }
 
+        [DisplayName("Loại tin tức")]
         public long? CategoryID { get; set; }
 
         [Column(TypeName = "ntext")]
+        [DisplayName("Nội dung")]
         public string Detail { get; set; }
 
         public DateTime? CreatedOn { get; set; }
@@ -48,9 +55,14 @@ namespace Model.EF
 
         public DateTime? TopHot { get; set; }
 
+        [DisplayName("Lượt xem")]
         public int? ViewCount { get; set; }
 
         [StringLength(50)]
         public string Tags { get; set; }
+
+        [Column(TypeName = "xml")]
+        [DisplayName("Danh sách hình")]
+        public string MoreImages { get; set; }
     }
 }

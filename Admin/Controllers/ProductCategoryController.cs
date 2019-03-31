@@ -12,9 +12,10 @@ namespace Admin.Controllers
     public class ProductCategoryController : Controller
     {
         // GET: ProductCategory
-        public ActionResult Index(int page = 1, int pageSize = 10)
+        public ActionResult Index(string searchString ,int page = 1, int pageSize = 30)
         {
-            var model = new ProductCategoryDao().ListAllPaging(page, pageSize);
+            var model = new ProductCategoryDao().ListAllPaging(searchString,page, pageSize);
+            ViewBag.SearchString = searchString;
             return View(model);
         }
 

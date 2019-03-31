@@ -1,4 +1,4 @@
-﻿@model PagedList.IPagedList<Model.EF.ProductCategory>
+﻿@model PagedList.IPagedList<Model.EF.Category>
 @using PagedList.Mvc;
 @{
     ViewBag.Title = "Index";
@@ -19,27 +19,27 @@
                 Danh sách Menu
                 <div class="pull-right">
                     @*<i class="fa fa-plus"></i>*@
-                    @Html.ActionLink("Tạo mới", "Create", "ProductCategory")
+                    @Html.ActionLink("Tạo mới", "Create", "Category")
                 </div>
             </div>
             <!-- /.panel-heading -->
             <div class="panel-body">
-                @using (Html.BeginForm("Index", "ProductCategory", FormMethod.Get))
-                {
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="col-md-4">
-                                <input type="text" class="form-control" name="searchString" value="@ViewBag.SearchString" />
-                            </div>
+                @*@using (Html.BeginForm("Index", "Category", FormMethod.Get))
+                    {
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control" name="searchString" value="@ViewBag.SearchString" />
+                                </div>
 
-                            <div class="col-md-4">
-                                <button type="submit" class="btn btn-default">
-                                    Tìm kiếm
-                                </button>
+                                <div class="col-md-4">
+                                    <button type="submit" class="btn btn-default">
+                                        Tìm kiếm
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                }
+                    }*@
                 <div class="table-responsive">
                     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                         <thead>
@@ -48,8 +48,6 @@
                                 <th>ID</th>
                                 <th>Tên hiển thị</th>
                                 <th>Vị trí hiển thị</th>
-                                <th>Cấp Menu</th>
-                                <th>Menu cha</th>
                                 <th>Trạng thái</th>
                                 <th>Hình ảnh</th>
                                 <th>Xóa/ Sửa</th>
@@ -63,12 +61,10 @@
                                     <td>@Model[i].ID</td>
                                     <td>@Model[i].Name</td>
                                     <td>@Model[i].DisplayOrder</td>
-                                    <td>@Model[i].LevelMenu</td>
-                                    <td>@Model[i].ParentID</td>
                                     <td><a href="#" class="btn-status" data-id="@Model[i].ID">@(Model[i].Status == true ? "Hoạt động" : "Tạm khóa")</a></td>
                                     <td><img width="100px" height="80px" src="@Model[i].Image" alt="Alternate Text" /></td>
                                     <td class="center">
-                                        <a href="/Admin/ProductCategory/Update/@Model[i].ID">Sửa</a>|
+                                        <a href="/Admin/Category/Update/@Model[i].ID">Sửa</a>|
                                         @Ajax.ActionLink("Xóa", "Delete", new { @id = Model[i].ID }, new AjaxOptions
                                    {
                                        Confirm = "Bạn có muốn xóa bản ghi này?",
@@ -80,7 +76,7 @@
                             }
                         </tbody>
                     </table>
-                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page , @searchString = ViewBag.SearchString}))
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, @searchString = ViewBag.SearchString }))
                 </div>
             </div>
             <!-- /.panel-body -->
@@ -91,5 +87,5 @@
 </div>
 
 @section jsFooter{
-    <script src="/Assets/js/controller/productCategoryController.js"></script>
+    <script src="/Assets/js/controller/categoryController.js"></script>
 }

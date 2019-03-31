@@ -143,6 +143,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\ContentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ProductCategoryController.cs" />
@@ -168,7 +169,9 @@
     <Content Include="Assets\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Assets\js\bootstrap.js" />
     <Content Include="Assets\js\bootstrap.min.js" />
+    <Content Include="Assets\js\controller\categoryController.js" />
     <Content Include="Assets\js\controller\productCategoryController.js" />
+    <Content Include="Assets\js\controller\contentController.js" />
     <Content Include="Assets\js\controller\productController.js" />
     <Content Include="Assets\js\controller\script.js" />
     <Content Include="Assets\js\demo\dashboard-demo.js" />
@@ -1165,6 +1168,9 @@
     <Content Include="Views\Shared\_Login.cshtml" />
     <Content Include="Views\Category\Create.cshtml" />
     <Content Include="Views\Category\Update.cshtml" />
+    <Content Include="Views\Category\Index.cshtml" />
+    <Content Include="Views\Content\Create.cshtml" />
+    <Content Include="Views\Content\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
