@@ -12,6 +12,7 @@ namespace Model.EF
         {
         }
 
+        public virtual DbSet<Brand> Brands { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Content> Contents { get; set; }
         public virtual DbSet<ContentTag> ContentTags { get; set; }
@@ -27,20 +28,8 @@ namespace Model.EF
         public virtual DbSet<About> Abouts { get; set; }
         public virtual DbSet<Sys_User> Sys_User { get; set; }
 
-
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Sys_User>()
-                .Property(e => e.UserCode)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Sys_User>()
-                .Property(e => e.Mobile)
-                .IsUnicode(false);
-            modelBuilder.Entity<Footer>()
-                .Property(e => e.Status)
-                .IsFixedLength();
-
             modelBuilder.Entity<Product>()
                 .Property(e => e.PromotionPrice)
                 .HasPrecision(18, 0);
@@ -52,6 +41,14 @@ namespace Model.EF
             modelBuilder.Entity<Product>()
                 .Property(e => e.Waranty)
                 .IsFixedLength();
+
+            modelBuilder.Entity<Sys_User>()
+                .Property(e => e.UserCode)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Sys_User>()
+                .Property(e => e.Mobile)
+                .IsUnicode(false);
         }
     }
 }

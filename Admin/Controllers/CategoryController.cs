@@ -64,6 +64,30 @@ namespace Admin.Controllers
             return View(model);
         }
 
+        [HttpPost]
+        public ActionResult Update(Category entity)
+        {
+            bool result;
+            try
+            {
+                result = new CategoryDao().Update(entity);
+            }
+            catch (Exception ex)
+            {
+                return View("Eror", new HandleErrorInfo(ex, "Category", "Index"));
+            }
+            if (result)
+            {
+                ModelState.AddModelError("","Cập nhật thành công");
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                ModelState.AddModelError("", "Cập nhật không thành công");
+                return RedirectToAction("Index");
+            }
+        }
+
         [HttpDelete]
         public ActionResult Delete(long id)
         {

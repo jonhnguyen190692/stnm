@@ -50,7 +50,7 @@
 
             //Tạo Ajax gọi hàm xử lý ảnh từ server khi nhấn nút Lưu 
             $.ajax({
-                url: '/Admin/Product/SaveImages',
+                url: '/Admin/About/SaveImages',
                 type: 'POST',
                 data: {
                     id: id,
@@ -81,7 +81,7 @@
             var id = $(this).data('id');
 
             $.ajax({
-                url: '/Admin/Product/ChangeStatus',
+                url: '/Admin/About/ChangeStatus',
                 data: {
                     id: id
                 },
@@ -104,7 +104,7 @@
     loadImages: function () {
         //Tạo Ajax gọi hàm load ảnh từ server
         $.ajax({
-            url: '/Admin/Product/LoadImage',
+            url: '/Admin/About/LoadImage',
             type: 'GET',
             data: {
                 id: $('#hidProductID').val()

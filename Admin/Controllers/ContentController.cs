@@ -63,6 +63,22 @@ namespace Admin.Controllers
            
         }
 
+        [HttpDelete]
+        public ActionResult Delete(long id)
+        {
+            bool result = new ContentDao().Delete(id);
+            if (result)
+            {
+                ModelState.AddModelError("", "Xóa thành công");
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                ModelState.AddModelError("", "Xóa không thành công");
+                return RedirectToAction("Index");
+            }
+        }
+
         public void SetViewBag(long? selectedId = null)
         {
             ViewBag.CategoryID = new SelectList(new CategoryDao().ListCategory(), "ID", "Name", selectedId);
@@ -115,6 +131,16 @@ namespace Admin.Controllers
             {
                 data = listImages
             }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult ChangeStatus(long id)
+        {
+            var result = new ContentDao().ChangeStatus(id);
+            return Json(new
+            {
+                status = result
+            });
         }
     }
 }

@@ -9,18 +9,18 @@ using System.Web.UI.WebControls;
 
 namespace Model.Dao
 {
-    public class ProductCategoryDao
+    public class BrandDao
     {
         DBModel db = null;
 
-        public ProductCategoryDao()
+        public BrandDao()
         {
             db = new DBModel();
         }
 
-        public long Insert(ProductCategory entity)
+        public long Insert(Brand entity)
         {
-            db.ProductCategories.Add(entity);
+            db.Brands.Add(entity);
             try
             {
                 db.SaveChanges();
@@ -32,22 +32,17 @@ namespace Model.Dao
             return entity.ID;
         }
 
-        public IEnumerable<ProductCategory> ListAllPaging(string searchString, int page, int pageSize)
+        public IEnumerable<Brand> ListAllPaging(int page, int pageSize)
         {
-            IQueryable<ProductCategory> model = db.ProductCategories;
-            if (!string.IsNullOrEmpty(searchString))
-            {
-                model.Where(x => x.Name.Contains(searchString));
-            }
-            return model.OrderBy(x => x.DisplayOrder).ToPagedList(page, pageSize);
+            return db.Brands.OrderBy(x => x.ID).ToPagedList(page, pageSize);
         }
 
-        public bool Delete(int id)
+        public bool Delete(long id)
         {
             try
             {
-                var model = db.ProductCategories.Find(id);
-                db.ProductCategories.Remove(model);
+                var model = db.Brands.Find(id);
+                db.Brands.Remove(model);
                 db.SaveChanges();
                 return true;
             }
@@ -57,12 +52,12 @@ namespace Model.Dao
             }
         }
 
-        public ProductCategory GetByID(int id)
+        public Brand GetByID(long id)
         {
-            return db.ProductCategories.FirstOrDefault(x => x.ID == id);
+            return db.Brands.FirstOrDefault(x => x.ID == id);
         }
 
-        public bool Update(ProductCategory entity)
+        public bool Update(Brand entity)
         {
             try
             {
@@ -71,7 +66,6 @@ namespace Model.Dao
                 model.MetaTitle = entity.MetaTitle;
                 model.MetaKeywords = entity.MetaKeywords;
                 model.MetaDescriptions = entity.MetaDescriptions;
-                model.LevelMenu = entity.LevelMenu;
                 model.Image = entity.Image;
                 //model.ModifiedBy = "";
                 model.ModifiedOn = DateTime.Now;
@@ -90,14 +84,13 @@ namespace Model.Dao
 
         public IEnumerable<ProductCategory> ListProductCtegory()
         {
-            var model = db.ProductCategories.Where(x => x.Status == true).ToList();
-            return model;
+            return db.ProductCategories.Where(x => x.Status == true).ToList();
         }
 
-        //public IEnumerable<ProductCategory> ListCategoryParent()
-        //{
-        //    return db.ProductCategories.Where(x => x.Status == true).ToList();
-        //}
+        public IEnumerable<ProductCategory> ListCategoryParent()
+        {
+            return db.ProductCategories.Where(x => x.Status == true);
+        }
 
         public bool ChangeStatus(long id)
         {
@@ -112,5 +105,6 @@ namespace Model.Dao
             var items = db.ProductCategories.Where(x => x.LevelMenu == (id - 1)).ToList();
             return items;
         }
+
     }
 }

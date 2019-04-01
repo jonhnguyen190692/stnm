@@ -9,6 +9,7 @@ namespace Model.EF
     [Table("sieuthin.Slide")]
     public partial class Slide
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
 
         [StringLength(250)]

@@ -6,26 +6,18 @@ using System.Web.Mvc;
 
 namespace WebSupperMarket.Controllers
 {
-    public class HomeController : Controller
+    public class ProductController : Controller
     {
+        // GET: Product
         public ActionResult Index()
         {
             return View();
         }
-        public ActionResult About()
+        public ActionResult mat_ong_tracybee()
         {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
-        public ActionResult RenderProductCategory()
+        public ActionResult collagen_vinh_hoan()
         {
             return View();
         }

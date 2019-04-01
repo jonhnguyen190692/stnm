@@ -142,8 +142,11 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AboutController.cs" />
+    <Compile Include="Controllers\BrandController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\ContentController.cs" />
+    <Compile Include="Controllers\FooterController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ProductCategoryController.cs" />
@@ -170,8 +173,10 @@
     <Content Include="Assets\js\bootstrap.js" />
     <Content Include="Assets\js\bootstrap.min.js" />
     <Content Include="Assets\js\controller\categoryController.js" />
+    <Content Include="Assets\js\controller\aboutController.js" />
     <Content Include="Assets\js\controller\productCategoryController.js" />
     <Content Include="Assets\js\controller\contentController.js" />
+    <Content Include="Assets\js\controller\brandController.js" />
     <Content Include="Assets\js\controller\productController.js" />
     <Content Include="Assets\js\controller\script.js" />
     <Content Include="Assets\js\demo\dashboard-demo.js" />
@@ -1171,6 +1176,12 @@
     <Content Include="Views\Category\Index.cshtml" />
     <Content Include="Views\Content\Create.cshtml" />
     <Content Include="Views\Content\Index.cshtml" />
+    <Content Include="Views\About\Create.cshtml" />
+    <Content Include="Views\About\Index.cshtml" />
+    <Content Include="Views\Footer\Create.cshtml" />
+    <Content Include="Views\Brand\Create.cshtml" />
+    <Content Include="Views\Brand\Index.cshtml" />
+    <Content Include="Views\Brand\Update.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

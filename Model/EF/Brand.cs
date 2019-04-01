@@ -7,33 +7,27 @@
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("sieuthin.About")]
-    public partial class About
+    [Table("sieuthin.Brand")]
+    public partial class Brand
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long ID { get; set; }
 
+        [DisplayName("Tên hiển thị")]
         [StringLength(250)]
-        [DisplayName("Tên")]
         public string Name { get; set; }
 
         [StringLength(250)]
         public string MetaTitle { get; set; }
 
-        [StringLength(500)]
-        [DisplayName("Mô tả")]
-        public string Description { get; set; }
+        [DisplayName("Menu cha")]
+        public long? ParentID { get; set; }
+
+        [DisplayName("Thứ tự hiển thị")]
+        public int? DisplayOrder { get; set; }
 
         [StringLength(250)]
-        [DisplayName("Hình ảnh")]
-        public string Image { get; set; }
-
-        [DisplayName("Loại")]
-        public long? CategoryID { get; set; }
-
-        [Column(TypeName = "ntext")]
-        [DisplayName("Nội dung")]
-        public string Detail { get; set; }
+        public string SeoTitle { get; set; }
 
         public DateTime? CreatedOn { get; set; }
 
@@ -51,6 +45,14 @@
         [StringLength(250)]
         public string MetaDescriptions { get; set; }
 
+        [DisplayName("Trạng thái")]
         public bool? Status { get; set; }
+
+        [DisplayName("Hiển thị ở trang chủ")]
+        public bool? ShowOnhome { get; set; }
+
+        [StringLength(250)]
+        [DisplayName("Hình ảnh")]
+        public string Image { get; set; }
     }
 }

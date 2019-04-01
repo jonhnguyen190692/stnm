@@ -9,13 +9,22 @@ namespace Model.EF
     [Table("sieuthin.Footer")]
     public partial class Footer
     {
-        [StringLength(50)]
-        public string ID { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int ID { get; set; }
 
         [Column(TypeName = "ntext")]
         public string Content { get; set; }
 
-        [StringLength(10)]
-        public string Status { get; set; }
+        public bool? Status { get; set; }
+
+        [StringLength(250)]
+        public string CreatedBy { get; set; }
+
+        public DateTime? CreatedOn { get; set; }
+
+        [StringLength(250)]
+        public string ModifiedBy { get; set; }
+
+        public DateTime? ModifiedOn { get; set; }
     }
 }

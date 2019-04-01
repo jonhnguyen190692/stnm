@@ -82,5 +82,29 @@ namespace Model.Dao
             model.MoreImages = images;
             db.SaveChanges();
         }
+
+        public bool Delete(long id)
+        {
+            try
+            {
+                var model = db.Products.FirstOrDefault(x => x.ID == id);
+                db.Products.Remove(model);
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            
+        }
+
+        public bool ChangeStatus(long id)
+        {
+            var model = db.Products.Find(id);
+            model.Status = !model.Status;
+            db.SaveChanges();
+            return bool.Parse(model.Status.ToString());
+        }
     }
 }

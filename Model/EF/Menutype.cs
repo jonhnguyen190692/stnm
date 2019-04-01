@@ -9,6 +9,7 @@ namespace Model.EF
     [Table("sieuthin.Menutype")]
     public partial class Menutype
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long ID { get; set; }
 
         [StringLength(50)]

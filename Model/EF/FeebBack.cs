@@ -9,6 +9,7 @@ namespace Model.EF
     [Table("sieuthin.FeebBack")]
     public partial class FeebBack
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
 
         [StringLength(50)]

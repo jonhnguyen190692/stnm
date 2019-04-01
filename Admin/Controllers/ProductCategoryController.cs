@@ -121,7 +121,7 @@ namespace Admin.Controllers
 
         public void SetViewBag(long? selectedId = null)
         {
-            ViewBag.CategoryID = new SelectList(new ProductCategoryDao().ListCategoryParent(), "ID", "Name", selectedId);
+            ViewBag.CategoryID = new SelectList(new ProductCategoryDao().ListProductCtegory(), "ID", "Name", selectedId);
         }
 
         [HttpPost]

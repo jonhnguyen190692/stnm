@@ -45,27 +45,28 @@
                         <tbody>
                             @for (var i = 0; i < Model.Count(); i++)
                             {
-                                <tr id="row_@Model[i].ID">
-                                    <td>@(i + 1)</td>
-                                    <td>@Model[i].ID</td>
-                                    <td>@Model[i].Name</td>
-                                    <td>@Model[i].Code</td>
-                                    <td>@(Model[i].Status == true ? "Hoạt động" : "Tạm khóa")</td>
-                                    <td>@Model[i].CategoryID</td>
-                                    <td>@Model[i].Price</td>
-                                    <td>@Model[i].PromotionPrice</td>
-                                    <td>@Model[i].Quantity</td>
-                                    <td><img width="100px" height="80px" src="@Model[i].Image" alt="Alternate Text" /></td>
-                                    <td class="center">
-                                        <a href="#" data-id="@Model[i].ID" class="btn-images">Quản lý ảnh</a>|
-                                        <a href="/Admin/Product/Update/@Model[i].ID">Sửa</a>|
-                                        @Ajax.ActionLink("Xóa","Delete",new { @id = Model[i].ID }, new AjaxOptions {
-                                       Confirm = "Bạn có muốn xóa bản ghi này?",
-                                       OnComplete = "$('#row_"+Model[i].ID+"').remove()",
-                                       HttpMethod = "Delete"
-                                   })
-                                    </td>
-                                </tr>
+                            <tr id="row_@Model[i].ID">
+                                <td>@(i + 1)</td>
+                                <td>@Model[i].ID</td>
+                                <td>@Model[i].Name</td>
+                                <td>@Model[i].Code</td>
+                                <td><a href="#" class="btn-status" data-id="@Model[i].ID">@(Model[i].Status == true ? "Hoạt động" : "Tạm khóa")</a></td>
+                                @*<td>@(Model[i].Status == true ? "Hoạt động" : "Tạm khóa")</td>*@
+                                <td>@Model[i].CategoryID</td>
+                                <td>@Model[i].Price</td>
+                                <td>@Model[i].PromotionPrice</td>
+                                <td>@Model[i].Quantity</td>
+                                <td><img width="100px" height="80px" src="@Model[i].Image" alt="Alternate Text" /></td>
+                                <td class="center">
+                                    <a href="#" data-id="@Model[i].ID" class="btn-images">Quản lý ảnh</a>|
+                                    <a href="/Admin/Product/Update/@Model[i].ID">Sửa</a>|
+                                    @Ajax.ActionLink("Xóa","Delete",new { @id = Model[i].ID }, new AjaxOptions {
+                                   Confirm = "Bạn có muốn xóa bản ghi này?",
+                                   OnComplete = "$('#row_"+Model[i].ID+"').remove()",
+                                   HttpMethod = "Delete"
+                               })
+                                </td>
+                            </tr>
                             }
                         </tbody>
                     </table>

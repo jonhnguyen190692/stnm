@@ -70,5 +70,30 @@ namespace Model.Dao
         {
             return db.Categories.Where(x => x.Status == true).ToList();
         }
+
+        public bool Update(Category entity)
+        {
+            try
+            {
+                var model = db.Categories.Find(entity.ID);
+                model.DisplayOrder = entity.DisplayOrder;
+                model.Image = entity.Image;
+                model.MetaDescriptions = entity.MetaDescriptions;
+                model.MetaKeywords = entity.MetaKeywords;
+                model.MetaTitle = entity.MetaTitle;
+                model.ModifiedOn = DateTime.Now;
+                model.Name = entity.Name;
+                model.SeoTitle = entity.SeoTitle;
+                model.ShowOnhome = entity.ShowOnhome;
+
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+        }
     }
 }
