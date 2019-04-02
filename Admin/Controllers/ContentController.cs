@@ -63,6 +63,14 @@ namespace Admin.Controllers
            
         }
 
+
+        [HttpGet]
+        public ActionResult Update(long id)
+        {
+            var model = new ContentDao().GetByID(id);
+            GetDropdown(long.Parse(model.ID.ToString()));
+            return View(model);
+        }
         [HttpDelete]
         public ActionResult Delete(long id)
         {
@@ -141,6 +149,20 @@ namespace Admin.Controllers
             {
                 status = result
             });
+        }
+
+        public ActionResult GetDropdown(long id)
+        {
+            DBModel db = new DBModel();
+            List<SelectListItem> l = new List<SelectListItem>();
+            var model = db.Categories.Where(x => x.Status == true).OrderByDescending(x => x.ID == id).ToArray();
+            for (int i = 0; i < model.Length; i++)
+            {
+                l.Add(new SelectListItem { Value = model[i].ID.ToString(), Text = model[i].Name });
+            }
+            ViewData["danhsach"] = l;
+            return View();
+
         }
     }
 }

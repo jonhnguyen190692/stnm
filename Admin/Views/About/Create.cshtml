@@ -5,14 +5,14 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create</h2>
+<h2 class="text-center text-warning">Tạo mới</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>About</h4>
+        <h4 class="text-primary">Thông tin công ty</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -132,20 +132,22 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Về trang danh sách", "Index")
 </div>
 
 @section jsFooter{
     <script>
-            $('#btnSelectImage').on('click', function (e) {
-                e.preventDefault();
-                var finder = new CKFinder();
-                finder.selectActionFunction = function (url) {
-                    $('#txtImage').val(url);
-                    $('#Image').attr('src', url);
-                };
-                finder.popup();
-        })
+        $('#btnSelectImage').on('click', function (e) {
+            e.preventDefault();
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (url) {
+                $('#txtImage').val(url);
+                $('#Image').attr('src', url);
+            };
+            finder.popup();
+        });
+
+        $('#txtImage').css('display', 'none');
 
         var editor = CKEDITOR.replace('txtContent', {
             customConfig: '/Assets/js/plugins/ckeditor/config.js',

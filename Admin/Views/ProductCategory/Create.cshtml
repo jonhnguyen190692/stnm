@@ -4,14 +4,19 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create</h2>
+<h2 class="text-center text-warning" >Tạo mới</h2>
 
+<style>
+    #parentId{
+        display:none;
+    }
+</style>
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>ProductCategory</h4>
+        <h4 class="text-primary">Loại sản phẩm</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -53,12 +58,24 @@
         <div class="form-group">
             @Html.LabelFor(model => model.ParentID, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.ParentID,  new { htmlAttributes = new { @class = "form-control" , @id = "txt-parent"}  })
+                @Html.TextBox("parentId")
+                @*@Html.DropDownListFor(model => model.ParentID, new SelectList(
+            new List<Object>{
+                new {Value =0, Text="Chọn trạng thái"}
+                //new {Value =1, Text="Hoạt động"},
+                //new {Value =2, Text="Tạm khóa"},
+                },
+            "Value",
+              "Text"
+        ), new { htmlAttributes = new { @class = "form-control" , @id = "stateDropDownList" }  })*@
                 <select id="stateDropDownList" class="form-control">
                     <option value="0" selected="selected">
                         Menu cha
                     </option>
                 </select>
+
+                @*<select id="ddlCustomers">
+        </select>*@
                 @Html.ValidationMessageFor(model => model.ParentID, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -191,7 +208,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input id="btn-submit" type="submit" value="Tạo" class="btn btn-default" />
+                <input id="btn-submit" type="submit" value="Tạo" class="btn btn-success" />
             </div>
         </div>
     </div>
@@ -210,7 +227,10 @@
                 $('#Image').attr('src', url);
             };
             finder.popup();
-        })
+        });
+        $('#countryDropDownList').addClass('form-control');
+        $('#TopBrand').addClass('form-control');
+        $('#txtImage').css('display','none');
     </script>
     <script src="/Assets/js/controller/script.js"></script>
     <script src="/Assets/js/controller/productCategoryController.js"></script>

@@ -75,7 +75,7 @@ namespace Model.Dao
                 model.Image = entity.Image;
                 //model.ModifiedBy = "";
                 model.ModifiedOn = DateTime.Now;
-                model.ParentID = model.ParentID;
+                model.ParentID = entity.ParentID;
                 model.SeoTitle = entity.SeoTitle;
                 model.ShowOnhome = entity.ShowOnhome;
                 model.Status = entity.Status;
@@ -90,7 +90,7 @@ namespace Model.Dao
 
         public IEnumerable<ProductCategory> ListProductCtegory()
         {
-            var model = db.ProductCategories.Where(x => x.Status == true).ToList();
+            var model = db.ProductCategories.Where(x => x.Status == true && x.LevelMenu ==1).OrderBy(x=>new { x.LevelMenu,x.DisplayOrder}).ToList();
             return model;
         }
 

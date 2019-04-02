@@ -5,14 +5,14 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Update</h2>
+<h2 class="text-center text-warning">Cập nhật</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Category</h4>
+        <h4 class="text-primary">Category</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -141,7 +141,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Tạo" class="btn btn-default" />
+                <input type="submit" value="Cập nhật" class="btn btn-primary" />
             </div>
         </div>
     </div>
@@ -152,14 +152,18 @@
 </div>
 @section jsFooter{
     <script>
-            $('#btnSelectImage').on('click', function (e) {
-                e.preventDefault();
-                var finder = new CKFinder();
-                finder.selectActionFunction = function (url) {
-                    $('#txtImage').val(url);
-                    $('#Image').attr('src', url);
-                };
-                finder.popup();
-            })
+        $('#btnSelectImage').on('click', function (e) {
+            e.preventDefault();
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (url) {
+                $('#txtImage').val(url);
+                $('#Image').attr('src', url);
+            };
+            finder.popup();
+        });
+
+        $('#ShowOnhome').addClass('form-control');
+        $('#Status').addClass('form-control');
+        $('#txtImage').css('display','none');
     </script>
 }

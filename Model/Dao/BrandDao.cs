@@ -61,7 +61,7 @@ namespace Model.Dao
         {
             try
             {
-                var model = db.ProductCategories.Find(entity.ID);
+                var model = db.Brands.Find(entity.ID);
                 model.Name = entity.Name;
                 model.MetaTitle = entity.MetaTitle;
                 model.MetaKeywords = entity.MetaKeywords;
@@ -69,7 +69,7 @@ namespace Model.Dao
                 model.Image = entity.Image;
                 //model.ModifiedBy = "";
                 model.ModifiedOn = DateTime.Now;
-                model.ParentID = model.ParentID;
+                model.ParentID = entity.ParentID;
                 model.SeoTitle = entity.SeoTitle;
                 model.ShowOnhome = entity.ShowOnhome;
                 model.Status = entity.Status;

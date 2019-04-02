@@ -1182,6 +1182,7 @@
     <Content Include="Views\Brand\Create.cshtml" />
     <Content Include="Views\Brand\Index.cshtml" />
     <Content Include="Views\Brand\Update.cshtml" />
+    <Content Include="Views\Content\Update.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

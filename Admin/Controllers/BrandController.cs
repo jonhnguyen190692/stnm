@@ -11,14 +11,14 @@ namespace Admin.Controllers
     public class BrandController : Controller
     {
         // GET: Brand
-        public ActionResult Index(int page =1 , int pageSize =30)
+        public ActionResult Index(int page = 1, int pageSize = 30)
         {
-            var model = new BrandDao().ListAllPaging( page, pageSize);
+            var model = new BrandDao().ListAllPaging(page, pageSize);
             return View(model);
         }
 
-        [HttpGet] 
-        public ActionResult Create ()
+        [HttpGet]
+        public ActionResult Create()
         {
             SetViewBag();
             return View();
@@ -40,9 +40,9 @@ namespace Admin.Controllers
                 {
                     return View("Error", new HandleErrorInfo(ex, "Brand", "Index"));
                 }
-                if (id> 0)
+                if (id > 0)
                 {
-                    ModelState.AddModelError("","Thêm mới thành công");
+                    ModelState.AddModelError("", "Thêm mới thành công");
                     return RedirectToAction("Index");
                 }
                 else
@@ -60,7 +60,7 @@ namespace Admin.Controllers
         }
 
         [HttpGet]
-        public ActionResult Update (long id)
+        public ActionResult Update(long id)
         {
 
             var model = new BrandDao().GetByID(id);
@@ -95,10 +95,26 @@ namespace Admin.Controllers
             }
             else
             {
-                ModelState.AddModelError("","Vui lòng nhập đầy đủ thông tin");
+                ModelState.AddModelError("", "Vui lòng nhập đầy đủ thông tin");
                 return View();
             }
-            
+
+        }
+
+        [HttpDelete]
+        public ActionResult Delete(long id)
+        {
+            bool result = new BrandDao().Delete(id);
+            if (result)
+            {
+                ModelState.AddModelError("", "Xóa thành công");
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                ModelState.AddModelError("", "Xóa không thành công");
+                return RedirectToAction("Index");
+            }
         }
 
         public void SetViewBag(long? selectedId = null)
@@ -110,14 +126,14 @@ namespace Admin.Controllers
         {
             DBModel db = new DBModel();
             List<SelectListItem> l = new List<SelectListItem>();
-            var model = db.ProductCategories.Where(x=>x.Status == true).OrderByDescending(x=>x.ParentID == id).ToArray();
+            var model = db.ProductCategories.Where(x => x.Status == true && x.LevelMenu == 1).OrderByDescending(x => x.ParentID == id).ToArray();
             for (int i = 0; i < model.Length; i++)
             {
                 l.Add(new SelectListItem { Value = model[i].ID.ToString(), Text = model[i].Name });
             }
             ViewData["danhsach"] = l;
             return View();
-            
+
         }
     }
 }

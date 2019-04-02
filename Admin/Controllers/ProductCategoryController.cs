@@ -84,6 +84,7 @@ namespace Admin.Controllers
         public ActionResult Update(int id)
         {
             var entity = new ProductCategoryDao().GetByID(id);
+            GetDropdown(long.Parse(entity.ParentID.ToString()));
             return View(entity);
         }
 
@@ -147,25 +148,6 @@ namespace Admin.Controllers
         [HttpPost]
         public JsonResult GetStates(string id)
         {
-            //var States = new List<string>();
-            //if (!string.IsNullOrWhiteSpace(country))
-            //{
-            //    if (country.Equals("Australia"))
-            //    {
-            //        States.Add("Sydney");
-            //        States.Add("Perth");
-            //    }
-            //    if (country.Equals("India"))
-            //    {
-            //        States.Add("Delhi");
-            //        States.Add("Mumbai");
-            //    }
-            //    if (country.Equals("Russia"))
-            //    {
-            //        States.Add("Minsk");
-            //        States.Add("Moscow");
-            //    }
-            //}
             ListItem item = new ListItem();
             int newID = int.Parse(id);
             var States = new ProductCategoryDao().LoadCategory(newID);
@@ -173,5 +155,36 @@ namespace Admin.Controllers
             return Json(States, JsonRequestBehavior.AllowGet);
         }
 
+        //[HttpPost]
+        //public JsonResult AjaxMethod()
+        //{
+        //    DBModel db = new DBModel();
+        //    List<SelectListItem> customers = new List<SelectListItem>();
+        //    var entities = db.ProductCategories.Where(x=>x.Status == true).ToArray();
+        //    for (int i = 0; i < entities.Length; i++)
+        //    {
+        //        customers.Add(new SelectListItem
+        //        {
+        //            Value = entities[i].ID.ToString(),
+        //            Text = entities[i].Name
+        //        });
+        //    }
+
+        //    return Json(customers);
+        //}
+
+        public ActionResult GetDropdown(long id)
+        {
+            DBModel db = new DBModel();
+            List<SelectListItem> l = new List<SelectListItem>();
+            var model = db.ProductCategories.Where(x => x.Status == true).OrderByDescending(x => x.ParentID == id).ToArray();
+            for (int i = 0; i < model.Length; i++)
+            {
+                l.Add(new SelectListItem { Value = model[i].ID.ToString(), Text = model[i].Name });
+            }
+            ViewData["danhsach"] = l;
+            return View();
+
+        }
     }
 }
