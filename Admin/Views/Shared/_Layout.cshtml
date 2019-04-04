@@ -270,7 +270,7 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Trang chủ</a>
+                            <a href="@Url.Action("Index","Home")"><i class="fa fa-dashboard fa-fw"></i> Trang chủ</a>
                         </li>
                         <li>
                             <a href="tables.html"><i class="fa fa-user fa-fw"></i> Hệ Thống<span class="fa arrow"></span></a>
@@ -329,6 +329,9 @@
                                 </li>
                             </ul>
                         </li>
+                        <li>
+                            <a href="@Url.Action("ManageImages","Home")" id="manage-images"><i class="fa fa-dashboard fa-fw"></i> Quản lý ảnh</a>
+                        </li>
                     </ul>
                     <!-- /#side-menu -->
                 </div>
@@ -363,9 +366,19 @@
     <script src="~/Assets/js/plugins/ckeditor/ckeditor.js"></script>
     <!-- Page-Level Demo Scripts - Dashboard - Use for reference -->
     <script src="/Assets/js/demo/dashboard-demo.js"></script>
+    <script>
+        $('#manage-images').on('click', function (e) {
+            e.preventDefault();
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (url) {
+                $('#txtImage').val(url);
+                $('#Image').attr('src', url);
+            };
+            finder.create();
+        });
+    </script>
     @RenderSection("jsFooter", required: false)
 </body>
-
 </html>
 
 

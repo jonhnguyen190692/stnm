@@ -385,8 +385,10 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="image\images_sprites_v1.8.png" />
+    <Content Include="image\may-giat-samsung-ww90k52e0ww-sv-dd-300x300.jpg" />
     <Content Include="image\Product\16114314_1810911125831348_8501223296843685700_n.jpg" />
     <Content Include="image\Product\mat sau to roi.jpg" />
+    <Content Include="image\Product\tivi-sony-kdl-43w800f-15-550x340-550x340.jpg" />
     <Content Include="image\Product\to roi mat truoc.jpg" />
     <Content Include="image\Product\Untitled-14.jpg" />
     <Content Include="Models\Adayroi.com _ Trung tâm thương mại điện tử của Vingroup - Adayroi.com.html" />

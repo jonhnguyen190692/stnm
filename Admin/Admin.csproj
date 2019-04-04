@@ -1183,11 +1183,11 @@
     <Content Include="Views\Brand\Index.cshtml" />
     <Content Include="Views\Brand\Update.cshtml" />
     <Content Include="Views\Content\Update.cshtml" />
+    <Content Include="Views\Home\ManageImages.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Plugin\" />
-    <Folder Include="Views\Home\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

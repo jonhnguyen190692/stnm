@@ -24,5 +24,10 @@ namespace Admin.Controllers
             else
                 return RedirectToAction("Index", "/Login");
         }
+
+        public ActionResult ManageImages()
+        {
+            return View();
+        }
     }
 }

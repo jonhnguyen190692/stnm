@@ -32888,7 +32888,7 @@ body.ios-11.modal-open #cboxWrapper {
     position: absolute;
     z-index: 50;
     height: 512px;
-    width: 196px;
+    width: 230px;
     top: 0;
     box-shadow: -2px 0 5px 0 hsla(0,0%,79%,.5)
 }
@@ -33145,7 +33145,7 @@ body.ios-11.modal-open #cboxWrapper {
 }
 
 .feature__sec-banner .feature__sec-focus {
-    width: 1030px
+    /*width: 1030px*/
 }
 
     .feature__sec-banner .feature__sec-focus a {
@@ -48630,6 +48630,7 @@ a:link.ui-button, a:visited.ui-button {
         }
 
         .owl-carousel.owl-drag .owl-item {
+            /*width:700px !important;*/
             -ms-touch-action: pan-y;
             touch-action: pan-y;
             -webkit-user-select: none;
@@ -63725,8 +63726,8 @@ body.ios-11.modal-open {
 .menu__cat-content {
     display: none;
     top: 0;
-    left: 195px;
-    width: 1040px;
+    left: 222px;
+    width: 1120px;
     background-color: #f7f7f7;
     border-left: 0;
     position: absolute;
@@ -71202,11 +71203,20 @@ header .navigation--middle .nav__left .site-search .input-group {
         margin-left: 0;
     }
 
+    .txtbanner img{
+        width:30px;
+        height:30px;
+        display:inline-block;
+        float:left;
+    }
+
     .txtbanner a {
+        display: inherit;
         color: #333;
         font-weight: 600;
         border-left: 1px solid #ddd;
-        display: inline-block;
+        display: inherit;
+        /*display: inline-block;*/
         margin-left: 15px;
         padding-left: 15px;
         line-height: 20px;
@@ -71238,18 +71248,25 @@ header .navigation--middle .nav__left .site-search .input-group {
 
 .bxknhcate_faq {
     overflow: hidden;
-    margin: 15px auto auto auto;
+    /*margin: 15px auto auto auto;*/
+    /*margin: 0px -8px auto 8px;*/
+    margin:-9px;
+    margin-bottom:5px;
     /*max-width: 1330px;*/
     background-color: #fff;
 }
 
-    .bxknhcate_faq li {
-        float: left;
-        width: 100%;
-        height: auto;
-        margin: 5px 1.5% 0 0;
-        overflow: hidden;
-    }
+.mega-menu-carousel{
+    margin-left:18px;
+}
+
+.bxknhcate_faq li {
+    float: left;
+    width: 100%;
+    height: auto;
+    margin: 5px 1.5% 0 0;
+    overflow: hidden;
+}
 
     .bxknhcate_faq .tith {
         float: left;
@@ -71353,5 +71370,10 @@ header .navigation--middle .nav__left .site-search .input-group {
 .img-fluid {
     width: 100% !important;
     height: auto !important;
+}
+
+.menu__cat--container{
+    margin:0 !important;
+    padding:0 !important;
 }
 /*#endregion */
